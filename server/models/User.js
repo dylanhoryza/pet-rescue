@@ -21,7 +21,10 @@ const userSchema = new Schema({
   avatar: {
     type: String
   },
-  favorites: [petSchema],
+  favorites: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Pet'
+  }],
   
 },
 {
