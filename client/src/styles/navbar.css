@@ -94,6 +94,8 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    justify-content: space-between; /* Distribute items evenly */
+    align-items: center; /* Align items vertically */
   }
   .desktop-menu li {
     margin-right: 40px;
@@ -104,6 +106,7 @@
     padding: 10px;
     display: block;
     font-size: 19px;
+    line-height: 1; /* Adjust line height if needed */
   }
   .desktop-menu span {
     color: black;
@@ -119,35 +122,46 @@
     color: white;
   }
   .desktop-menu span:hover .dropdown-menu {
-    background-color: #9a58cc;
+    background-color: rgba(154, 88, 204, 0.5); /* RGB with opacity (0.5) */
+
     border-radius: 8px;
     display: block;
     color: white;
   }
   .dropdown-menu li:hover {
     color: white;
-
   }
-
 
   .navbar {
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0; /* Adjust left to align it properly */
     padding: 10px;
     z-index: 1000;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-evenly; /* Distribute items evenly */
     align-items: center;
     width: 100%;
+    border-bottom: 2px solid #9a58cc;
+    background-color: white;
   }
+
   .header-image {
-    margin-right: 1050px; /* Adjust margin as needed */
+    display: flex;
+    align-items: center; /* Center the logo vertically */
+    margin-left: auto; /* Push the logo to the right */
+    margin-right: auto; /* Push the logo to the left */
+  }
+
+  .logo-header {
+    width: 150px;
+    margin-right: 20px;
   }
 }
 
-@media (min-width: 1920px) {
+
+/* @media (min-width: 1920px) {
   .header-image {
-    margin-right: 1150px; /* Adjust margin as needed */
+    margin-right: 1150px; 
   }
-}
+} */
