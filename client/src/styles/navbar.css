@@ -1,0 +1,153 @@
+/* For mobile screens */
+@media (max-width: 767px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .header-image {
+    margin-right: 70px;
+    margin-left: 0;
+  }
+
+  .menu-items li,
+  .menu-span {
+    margin-bottom: 10px;
+    font-size: 24px;
+
+    width: 100%;
+    text-decoration: none;
+  }
+  .menu-items li a,
+  .menu-span {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+  }
+  .menu-items li a:hover {
+    background-color: rgb(128, 184, 208);
+    border-radius: 8px;
+  }
+  .desktop-menu {
+    display: none;
+  }
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    z-index: 1000;
+    /*navbar is above other content */
+  }
+
+  .background-nav-container {
+    width: 65px;
+  }
+
+  .hamburger {
+    width: 35px;
+    height: 3px;
+    background-color: #fff;
+    margin-bottom: 5px;
+    transition: transform 0.3s ease; /* Only transform property is transitioned */
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    padding: 10px;
+  }
+
+  .dropdown-menu li {
+    list-style: none;
+  }
+
+  .dropdown-menu li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+  }
+
+  .dropdown-menu li a:hover {
+    background-color: #555;
+  }
+
+  .menu-items .background-nav-container:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+/* For desktop screens */
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none;
+  }
+  .menu-items {
+    display: none;
+  }
+  .desktop-menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .desktop-menu li {
+    margin-right: 40px;
+  }
+  .desktop-menu li a {
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    font-size: 19px;
+  }
+  .desktop-menu span {
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    font-size: 20px;
+  }
+
+  .desktop-menu li a:hover {
+    background-color: #9a58cc;
+    border-radius: 8px;
+    color: white;
+  }
+  .desktop-menu span:hover .dropdown-menu {
+    background-color: #9a58cc;
+    border-radius: 8px;
+    display: block;
+    color: white;
+  }
+  .dropdown-menu li:hover {
+    color: white;
+
+  }
+
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+  .header-image {
+    margin-right: 1050px; /* Adjust margin as needed */
+  }
+}
+
+@media (min-width: 1920px) {
+  .header-image {
+    margin-right: 1150px; /* Adjust margin as needed */
+  }
+}
