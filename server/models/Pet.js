@@ -7,19 +7,68 @@ const petSchema = new Schema({
   },
   breed: {
     type: String,
-    required: true
+    required: true,
   },
-  age: {
-    type: Number,
-    required: true
+  ageGroup: {
+    type: String,
+    required: true,
   },
   description: {
     type: String,
-    required: true
-  },
-  photo: {
-    type: String,
     
+  },
+  photos: [{
+    type: String,
+  }],
+  trainingLevel: {
+    type: String,
+  },
+  housebroken: {
+    type: String,
+  },
+  crateTrained: {
+    type: String,
+  },
+  currentMedication: {
+    type: String,
+  },
+  specialNeeds: {
+    type: String,
+  },
+  favoriteSleep: {
+    type: String,
+  },
+  favoriteActivity: {
+    type: String,
+  },
+  favoriteSnack: {
+    type: String,
+  },
+  likes: {
+    type: String,
+  },
+  dislikes: {
+    type: String,
+  },
+  scaredOf: {
+    type: String,
+  },
+  bestDay: {
+    type: String,
+  },
+  otherFacts: {
+    type: String,
+  },
+  status: {
+    type: String,
+  },
+  fosterParent: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
   }
 });
 
