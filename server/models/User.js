@@ -19,12 +19,16 @@ const userSchema = new Schema({
     required: true,
   },
   avatar: {
-    type: String
+    type: String,
   },
-  favorites: [{
+  fosterPets: [{
     type: Schema.Types.ObjectId,
     ref: 'Pet'
   }],
+  roles: {
+    type: [String],
+    default: [],
+  },
   
 },
 {
