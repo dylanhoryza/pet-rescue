@@ -8,7 +8,10 @@ const {
 } = require('../../controllers/userController');
 
 // api/users
-router.route('/').get(loginUser).post(registerUser);
+router.route('/').post(registerUser);
+
+// api/users/login
+router.route('/login').post(loginUser);
 
 // api/users/profile
 router.get('/profile', authMiddleware, protectedRoute);
