@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { checkPassword, validateEmail } from '../utils/helpers';
 import { createUser } from '../utils/api';
+
 import '../styles/signup.css'
 
 export default function SignUp() {
@@ -11,6 +12,7 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -40,9 +42,12 @@ export default function SignUp() {
       const response = await createUser(userData);
 
       if (response.ok) {
-        // User creation successful
-        // Redirect user to profile route or perform any other action
-        alert('user created')
+        const userData = await response.json();
+        const userId = userData.user.id; 
+        localStorage.setItem('token', userData.token)
+        console.log(userData.user.username);
+        window.location.href = `/profile/${userId}`
+      
         setEmail('');
         setPassword('');
         setUserName('');
