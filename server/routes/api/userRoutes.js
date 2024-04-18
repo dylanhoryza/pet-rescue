@@ -5,6 +5,7 @@ const {
   registerUser,
   loginUser,
   protectedRoute,
+  getUserProfile
 } = require('../../controllers/userController');
 
 // api/users
@@ -14,6 +15,6 @@ router.route('/').post(registerUser);
 router.route('/login').post(loginUser);
 
 // api/users/profile
-router.get('/profile', authMiddleware, protectedRoute);
+router.get('/profile/:userId', authMiddleware, getUserProfile);
 
 module.exports = router;

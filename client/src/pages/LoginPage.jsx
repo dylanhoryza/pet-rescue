@@ -2,12 +2,14 @@ import React from 'react';
 import { useState } from 'react';
 import { checkPassword, validateEmail } from '../utils/helpers';
 import { loginUser } from '../utils/api';
-import '../styles/signup.css'
+
+import '../styles/signup.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -29,9 +31,12 @@ export default function Login() {
       const response = await loginUser(userData);
 
       if (response.ok) {
-        // Login successful
-        // Redirect user or perform any other action
-        alert('Login successful');
+        const userData = await response.json();
+        const userId = userData.user.id; 
+        localStorage.setItem('token', userData.token)
+        console.log(userData.user.username);
+        window.location.href = `/profile/${userId}`
+
         setEmail('');
         setPassword('');
       } else {
@@ -47,31 +52,31 @@ export default function Login() {
   };
 
   return (
-    <div className="signup-container-2">
-      <div className="container text-center signup-container">
-        <h1 className="signup-header">Login</h1>
-        <form className="form" onSubmit={handleFormSubmit}>
+    <div className='signup-container-2'>
+      <div className='container text-center signup-container'>
+        <h1 className='signup-header'>Login</h1>
+        <form className='form' onSubmit={handleFormSubmit}>
           <input
             value={email}
-            name="email"
+            name='email'
             onChange={handleInputChange}
-            type="email"
-            placeholder="Your Email"
+            type='email'
+            placeholder='Your Email'
           />
           <input
             value={password}
-            name="password"
+            name='password'
             onChange={handleInputChange}
-            type="password"
-            placeholder="Password"
+            type='password'
+            placeholder='Password'
           />
-          <button className="contact-submit-btn" type="submit">
+          <button className='contact-submit-btn' type='submit'>
             Login
           </button>
         </form>
         {errorMessage && (
           <div>
-            <p className="error-text">{errorMessage}</p>
+            <p className='error-text'>{errorMessage}</p>
           </div>
         )}
       </div>

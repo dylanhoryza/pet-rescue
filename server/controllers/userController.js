@@ -12,7 +12,7 @@ const registerUser = async (req, res) => {
     const token = signToken(newUser);
 
     // Send response with token
-    res.status(201).json({ token });
+    res.status(201).json({ token, user: newUser });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Server error' });
@@ -40,9 +40,28 @@ const loginUser = async (req, res) => {
     const token = signToken(user);
 
     // Send response with token
-    res.json({ token, isAdmin, isFoster });
+    res.json({ token, isAdmin, isFoster, user });
   } catch (error) {
     console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+// GET user profile
+const getUserProfile = async (req, res) => {
+  try {
+    // Fetch user profile data from the database based on userId
+    const userId = req.params.userId;
+    const user = await User.findById(userId);
+
+    if (user) {
+      // Send user profile data as JSON response
+      res.json(user);
+    } else {
+      res.status(404).json({ error: 'User not found' });
+    }
+  } catch (error) {
+    console.error('Error fetching user profile:', error);
     res.status(500).json({ error: 'Server error' });
   }
 };
@@ -52,4 +71,4 @@ const protectedRoute = (req, res) => {
   res.json({ message: 'Protected route', user: req.user });
 };
 
-module.exports = { registerUser, loginUser, protectedRoute };
+module.exports = { registerUser, loginUser, protectedRoute, getUserProfile };
