@@ -38,3 +38,13 @@ export const getUserProfile = async (userId) => {
     throw error;
   }
 };
+
+export const createPet = async (petData) => {
+  return fetch('/api/pets', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(petData)
+  })
+}

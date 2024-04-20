@@ -1,3 +1,22 @@
 .welcome-header {
-  margin-top: 400px;
+  margin-top: 250px;
+  margin-left: 50px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  
+}
+
+button {
+  margin-right: 10px;
+  width: 150px;
+  height: 40px;
+  font-size: 18px;
+  background-color: #9a58cc;
+  color: white;
+  border-style: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(71, 71, 71, 0.6);
 }

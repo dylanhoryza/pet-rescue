@@ -66,9 +66,28 @@ const getUserProfile = async (req, res) => {
   }
 };
 
+const getUserName = async (req, res) => {
+  try {
+    const { username } = req.params;
+    
+    // Find the user in the database by username
+    const user = await User.findOne({ username });
+    
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    
+    // If user found, return their data
+    res.json(user);
+  } catch (error) {
+    console.error('Error finding user by username:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+}
+
 // Example protected route
 const protectedRoute = (req, res) => {
   res.json({ message: 'Protected route', user: req.user });
 };
 
-module.exports = { registerUser, loginUser, protectedRoute, getUserProfile };
+module.exports = { registerUser, loginUser, protectedRoute, getUserProfile, getUserName };

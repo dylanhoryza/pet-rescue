@@ -1,4 +1,5 @@
 const Pet = require('../models/Pet');
+const User = require('../models/User');
 
 module.exports = {
   // Create Pet
@@ -10,6 +11,7 @@ module.exports = {
       res.status(500).json(error);
     }
   },
+  
   // Update Pet
   async updatePet(req, res) {
     try {
