@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getUserProfile } from '../utils/api';
+import NewDogModal from '../components/CreateDog';
 import '../styles/profilepage.css'
 
 export default function Profile() {
@@ -33,9 +34,15 @@ export default function Profile() {
   }
 
   return (
-    <div>
-      <h1 className='welcome-header'>Welcome {userData.username}</h1>
+    <div className='profile-container'>
+      <h1 className='welcome-header'>Welcome, {userData.username}!</h1>
       {/* Display other user profile data */}
+      <div className='button-container'>
+      <NewDogModal />
+      <button>Edit Dog</button>
+      <button>Remove Dog</button>
+      </div>
+      
     </div>
   );
 }
