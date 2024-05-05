@@ -45,6 +45,7 @@ export default function NewDogModal({ onSubmit }) {
       const userData = await response.json();
       const fosterParentId = userData._id;
 
+
       // Include the fosterParentId in the pet data before creating
       const petData = {
         ...formData,
@@ -84,9 +85,67 @@ export default function NewDogModal({ onSubmit }) {
     }
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     // Send request to backend to get user ID based on the entered username
+  //     const response = await fetch(
+  //       `/api/users/username/${formData.fosterParentUsername}`
+  //     );
+  //     const userData = await response.json();
+  //     const fosterParentId = userData._id;
+  
+  //     // Include the fosterParentId in the pet data before creating
+  //     const petData = {
+  //       ...formData,
+  //       fosterParent: fosterParentId,
+  //     };
+  
+  //     // Log FormData before submitting
+  //     const formDataToSend = new FormData();
+  //     for (const key in petData) {
+  //       formDataToSend.append(key, petData[key]);
+  //     }
+  //     console.log('FormData:', formDataToSend);
+  
+  //     // Create the pet
+  //     const createdPet = await createPet(formDataToSend);
+  //     console.log('Pet created:', createdPet);
+  
+  //     // Clear the form after successful creation
+  //     setFormData({
+  //       name: '',
+  //       breed: '',
+  //       ageGroup: '',
+  //       description: '',
+  //       photos: [],
+  //       trainingLevel: '',
+  //       housebroken: '',
+  //       crateTrained: '',
+  //       currentMedication: '',
+  //       specialNeeds: '',
+  //       favoriteSleep: '',
+  //       favoriteActivity: '',
+  //       favoriteSnack: '',
+  //       likes: '',
+  //       dislikes: '',
+  //       scaredOf: '',
+  //       bestDay: '',
+  //       otherFacts: '',
+  //       status: '',
+  //       fosterParentUsername: '',
+  //     });
+  //     handleClose();
+  //   } catch (error) {
+  //     console.error('Error creating pet:', error);
+  //   }
+  // };
+  
+
+
+
   const handlePhotoChange = (event) => {
-    const selectedPhotos = event.target.files;
-    // Do something with the selected photos, such as storing them in state
+    const selectedPhotos = Array.from(event.target.files);
     setFormData({
       ...formData,
       photos: selectedPhotos,
@@ -104,7 +163,7 @@ export default function NewDogModal({ onSubmit }) {
           <Modal.Title>Add New Dog</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} encType="multipart/form-data">
             {/* Input fields for dog data */}
             <Form.Group controlId='name'>
               <Form.Label style={{ marginBottom: '-10px' }}>Name</Form.Label>
@@ -342,7 +401,6 @@ export default function NewDogModal({ onSubmit }) {
                 onChange={handleChange}
               />
             </Form.Group>
-            {/* Add more Form.Group for other fields */}
             <Button variant='primary' type='submit'>
               Save
             </Button>

@@ -1,16 +1,62 @@
 const Pet = require('../models/Pet');
 const User = require('../models/User');
 
+
+
 module.exports = {
   // Create Pet
+  // async createPet(req, res) {
+  //   try {
+  //     const petData = await Pet.create(req.body);
+  //     res.json(petData);
+  //   } catch (error) {
+  //     res.status(500).json(error);
+  //   }
+  // },
   async createPet(req, res) {
     try {
-      const petData = await Pet.create(req.body);
-      res.json(petData);
+      // Extract other form data from req.body
+      const { name, breed, ageGroup, description, status, fosterParentUsername, trainingLevel, housebroken, crateTrained, currentMedication, specialNeeds, favoriteSleep, favoriteActivity, favoriteSnack, likes, dislikes, scaredOf, bestDay, otherFacts } = req.body;
+
+      // Extract the file paths of the uploaded photos
+      const photoPaths = req.files ? req.files.map(file => file.path) : [];
+      console.log(photoPaths);
+
+      // Create a new pet object with the form data and photo paths
+      const newPet = new Pet({
+        name,
+        breed,
+        ageGroup,
+        description,
+        status,
+        fosterParentUsername,
+        trainingLevel,
+        housebroken,
+        crateTrained,
+        currentMedication,
+        specialNeeds,
+        favoriteSleep,
+        favoriteActivity,
+        favoriteSnack,
+        likes,
+        dislikes,
+        scaredOf,
+        bestDay,
+        otherFacts,
+        photos: photoPaths 
+      });
+
+      // Save the new pet to the database
+      const savedPet = await newPet.save();
+
+      res.status(201).json(savedPet);
     } catch (error) {
       res.status(500).json(error);
     }
   },
+
+
+
   
   // Update Pet
   async updatePet(req, res) {
