@@ -48,3 +48,22 @@ export const createPet = async (petData) => {
     body: JSON.stringify(petData)
   })
 }
+
+export const getAllPets = async () => {
+  try {
+    const response = await fetch('/api/pets', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    if (!response.ok) {
+      throw new Error('Failed to fetch pets');
+    }
+    const pets = await response.json();
+    return pets;
+  } catch (error) {
+    console.error('Error fetching pets:', error);
+    throw error; 
+  }
+};

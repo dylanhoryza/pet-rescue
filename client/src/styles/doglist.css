@@ -1,0 +1,18 @@
+.doglist-container {
+  width: 100%;
+}
+
+.card-body {
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: 30px;
+}
+
+p span {
+  font-weight: bold;
+}
