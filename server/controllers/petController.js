@@ -94,5 +94,19 @@ module.exports = {
     } catch (error) {
       res.status(500).json(error);
     }
+  },
+
+  //Get pet by Id
+  async getPetById(req, res) {
+    try {
+      const pet = await Pet.findById(req.params.petId);
+      if (!pet) {
+        return res.status(404).json({ message: 'Dog not found' });
+      }
+      res.json(pet);
+    } catch (error) {
+      console.error('Error fetching dog:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
   }
 }
