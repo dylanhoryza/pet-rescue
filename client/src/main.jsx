@@ -9,6 +9,7 @@ import SignUp from './pages/SignUpPage.jsx';
 import Login from './pages/LoginPage.jsx';
 import Profile from './pages/ProfilePage.jsx';
 import AdoptDogPage from './pages/AdpotDogPage.jsx';
+import DogInfoPage from './pages/DogInfoPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: '/adopt/danes',
         element: <AdoptDogPage />
+      },
+      {
+        path: '/adopt/:petId',
+        element: <DogInfoPage />
       },
       
     ]

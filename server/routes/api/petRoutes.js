@@ -5,6 +5,7 @@ const {
   updatePet,
   deletePet,
   getPets,
+  getPetById
 } = require('../../controllers/petController');
 
 // Set up multer storage configuration
@@ -30,6 +31,7 @@ router.post('/', upload.array('photos', 5), createPet);
 router
 .route('/:petId')
 .put(updatePet)
+.get(getPetById)
 .delete(deletePet);
 
 module.exports = router;
