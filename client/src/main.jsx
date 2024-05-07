@@ -10,6 +10,7 @@ import Login from './pages/LoginPage.jsx';
 import Profile from './pages/ProfilePage.jsx';
 import AdoptDogPage from './pages/AdpotDogPage.jsx';
 import DogInfoPage from './pages/DogInfoPage.jsx';
+import AdoptionProcess from './pages/AdoptionProcessPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: '/adopt/:petId',
         element: <DogInfoPage />
+      },
+      {
+        path: '/adopt/process',
+        element: <AdoptionProcess />
       },
       
     ]
